@@ -4,6 +4,8 @@ import styled from 'styled-components';
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  width: 60%;
 `;
 
 const InputGroup = styled.div`
@@ -49,8 +51,8 @@ const TrackForm = () => {
 
   return (
     <React.Fragment>
-      <h3>Add an item to your list</h3>
       <Form onSubmit={addItem}>
+        <h3>Add an item to your list</h3>
         <InputGroup>
           <label htmlFor="name">Name</label>
           <input type="text" name="name" value={inputs.name} onChange={handleInputChange} />
@@ -73,7 +75,7 @@ const TrackForm = () => {
             <select name="reminderTime">
               <option value="30days">30 days</option>
               <option value="90days">90 days</option>
-              <option value="6months">6 months</option>
+              <option value="3months">3 months</option>
             </select>
           </label>
         </InputGroup>

@@ -24,8 +24,37 @@ const Header = styled.header`
   }
 `;
 
+const Main = styled.main`
+  width: 70vw;
+`;
+
 function App() {
-  const [trackedItems, setTrackedItems] = useState([]);
+  const [trackedItems, setTrackedItems] = useState([
+    {
+      name: 'Toothbrush',
+      startDate: '05/14/20',
+      reminder: true,
+      reminderTime: '3months',
+      price: 5,
+      id: 1
+    },
+    {
+      name: 'Toilet paper',
+      startDate: '05/28/20',
+      reminder: false,
+      reminderTime: null,
+      price: 1.25,
+      id: 2
+    },
+    {
+      name: 'Sunscreen',
+      startDate: '05/02/20',
+      reminder: false,
+      reminderTime: null,
+      price: 15,
+      id: 3
+    }
+  ]);
 
   return (
     <Wrapper>
@@ -33,10 +62,10 @@ function App() {
         <h1>Untitled Inventory</h1>
         <h2>Keep track of stuff you need to replace eventually.</h2>
       </Header>
-      <main>
+      <Main>
         <TrackForm />
         <TrackedList items={trackedItems} />
-      </main>
+      </Main>
     </Wrapper>
   );
 }
