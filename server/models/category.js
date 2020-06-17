@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const itemSchema = require('./item');
+const itemSchema = require('./item').schema;
 
 const categorySchema = mongoose.Schema({
   name: String,
-  items: [itemSchema],
+  items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Item' }],
   avgUseLength: Number,
   setReminder: Boolean,
   reminderLength: Number
