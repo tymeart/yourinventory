@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const itemSchema = mongoose.Schema({
+  category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
   brand: String,
   startDate: Date,
   price: Number,
