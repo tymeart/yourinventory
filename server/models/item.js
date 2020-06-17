@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const itemSchema = mongoose.Schema({
   brand: String,
   startDate: Date,
-  price: Number
+  price: Number,
+  quantityNumber: Number,
+  quantityUnit: String
 });
 
 itemSchema.set('toJSON', {
