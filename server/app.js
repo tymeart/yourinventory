@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const logger = require('./utils/logger');
+const middleware = require('./utils/middleware');
 
 logger.info('Connecting to', config.MONGODB_URI);
 
@@ -12,5 +13,8 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology
   .catch(error => logger.error('ERROR CONNECTING TO MONGODB:', error.message));
 
 app.use(bodyParser.json());
+app.use(middleware.requestLogger);
+app.use(middleware.unknownEndpoint);
+app.use(middleware.errorHandler);
 
 module.exports = app;
