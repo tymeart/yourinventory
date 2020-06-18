@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 
 const itemSchema = mongoose.Schema({
   category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
-  brand: String,
-  startDate: Date,
-  price: Number,
-  quantityNumber: Number,
-  quantityUnit: String
+  brand: { type: String, required: true },
+  startDate: { type: Date, required: true },
+  price: { type: Number, required: true },
+  quantityNumber: { type: Number, required: true },
+  quantityUnit: { type: String, required: true }
 });
 
 itemSchema.set('toJSON', {
