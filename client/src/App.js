@@ -59,7 +59,7 @@ function App() {
   return (
     <Wrapper>
       <Header>
-        <h1>Untitled Inventory</h1>
+        <h1>Your Inventory</h1>
         <h2>Keep track of stuff you need to replace eventually.</h2>
       </Header>
       <Main>
