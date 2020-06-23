@@ -5,6 +5,18 @@ const itemSchema = mongoose.Schema({
   brand: { type: String, required: true },
   startDate: { type: Date, required: true },
   endDate: Date,
+  price: { 
+    type: Number,
+    min: 0,
+    max: 1000, 
+    required: true 
+  },
+  quantityNumber: { 
+    type: Number, 
+    min: 0,
+    max: 1000,
+    required: true 
+  },
   quantityUnit: { type: String, required: true }
 });
 
