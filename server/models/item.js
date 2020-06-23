@@ -4,8 +4,7 @@ const itemSchema = mongoose.Schema({
   category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
   brand: { type: String, required: true },
   startDate: { type: Date, required: true },
-  price: { type: Number, required: true },
-  quantityNumber: { type: Number, required: true },
+  endDate: Date,
   quantityUnit: { type: String, required: true }
 });
 
