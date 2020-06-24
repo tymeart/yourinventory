@@ -11,7 +11,7 @@ const itemsRouter = require('./controllers/items');
 
 logger.info('Connecting to', config.MONGODB_URI);
 
-mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
   .then(result => logger.info('CONNECTED TO MONGODB'))
   .catch(error => logger.error('ERROR CONNECTING TO MONGODB:', error.message));
 

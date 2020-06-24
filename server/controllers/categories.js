@@ -19,4 +19,16 @@ categoriesRouter.post('/', async (req, res) => {
   res.json(savedCategory.toJSON());
 });
 
+categoriesRouter.put('/:id', async (req, res) => {
+  await Category.findByIdAndUpdate(
+    req.params.id, 
+    {
+      name: req.body.name,
+      setReminder: req.body.setReminder,
+      reminderLength: req.body.reminderLength
+    },
+    { new: true }
+  );
+});
+
 module.exports = categoriesRouter;
