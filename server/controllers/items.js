@@ -43,6 +43,10 @@ itemsRouter.put('/:id', async (req, res) => {
   res.json(update.toJSON());
 });
 
-// delete
+itemsRouter.delete('/:id', async (req, res) => {
+  const deletedItem = await Item.findByIdAndRemove(req.params.id);
+
+  res.json(deletedItem.toJSON());
+});
 
 module.exports = itemsRouter;
