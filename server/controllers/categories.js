@@ -20,15 +20,17 @@ categoriesRouter.post('/', async (req, res) => {
 });
 
 categoriesRouter.put('/:id', async (req, res) => {
-  await Category.findByIdAndUpdate(
+  const update = await Category.findByIdAndUpdate(
     req.params.id, 
     {
       name: req.body.name,
       setReminder: req.body.setReminder,
       reminderLength: req.body.reminderLength
     },
-    { new: true }
+    { new: true } // returns the newly updated document
   );
+
+  res.json(update.toJSON());
 });
 
 module.exports = categoriesRouter;
