@@ -14,19 +14,34 @@ itemsRouter.post('/', async (req, res) => {
     category: category._id,
     brand: req.body.brand,
     startDate: req.body.startDate,
+    endDate: req.body.endDate,
     price: req.body.price,
     quantityNumber: req.body.quantityNumber,
     quantityUnit: req.body.quantityUnit
   });
 
   const savedItem = await item.save();
-  console.log(category)
   category.items = category.items.concat(savedItem._id);
   await category.save();
   res.json(savedItem.toJSON());
 });
 
-// update
+itemsRouter.put('/:id', async (req, res) => {
+  const update = await Item.findByIdAndUpdate(
+    req.params.id,
+    {
+      brand: req.body.brand,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      price: req.body.price,
+      quantityNumber: req.body.quantityNumber,
+      quantityUnit: req.body.quantityUnit
+    },
+    { new: true } // returns the newly updated document
+  );
+
+  res.json(update.toJSON());
+});
 
 // delete
 
