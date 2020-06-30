@@ -64,7 +64,7 @@ function App() {
       </Header>
       <Main>
         <TrackForm />
-        <TrackedList items={trackedItems} />
+        <TrackedList />
       </Main>
     </Wrapper>
   );
