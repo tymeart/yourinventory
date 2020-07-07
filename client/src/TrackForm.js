@@ -29,6 +29,7 @@ const TrackForm = () => {
   const [inputs, setInputs] = useState({
     name: '',
     startDate: '',
+    endDate: '',
     reminder: false,
     reminderTime: null,
     price: 0
@@ -61,6 +62,11 @@ const TrackForm = () => {
         <InputGroup>
           <label htmlFor="startDate">Start Date</label>
           <input type="date" name="startDate" value={inputs.startDate} onChange={handleInputChange} />
+        </InputGroup>
+        
+        <InputGroup>
+          <label htmlFor="endDate">End Date</label>
+          <input type="date" name="endDate" value={inputs.endDate} onChange={handleInputChange} />
         </InputGroup>
         
         <InputGroup>
