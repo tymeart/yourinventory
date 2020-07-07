@@ -5,7 +5,7 @@ const categorySchema = mongoose.Schema({
   items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Item' }],
   avgUseLength: Number,
   setReminder: { type: Boolean, required: true },
-  reminderLength: { type: Number, required: function() { return this.setReminder === true } }
+  reminderLength: Number
 });
 
 categorySchema.set('toJSON', {

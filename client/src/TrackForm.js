@@ -31,17 +31,19 @@ const TrackForm = () => {
     startDate: '',
     endDate: '',
     reminder: false,
-    reminderTime: null,
+    reminderLength: 1,
     price: 0
   });
 
   const handleInputChange = (event) => {
     event.persist();
+    
     setInputs(inputs => {
-      return {
-        ...inputs, 
-        [event.target.name]: event.target.value
+      if (event.target.type === "checkbox") {
+        return { ...inputs, [event.target.name]: event.target.checked };
       }
+
+      return { ...inputs, [event.target.name]: event.target.value };
     });
   }
 
@@ -82,15 +84,13 @@ const TrackForm = () => {
         </InputGroup>
 
         <InputGroup>
-          <input type="checkbox" name="reminder" value="reminder" />
-          <label htmlFor="reminder">
-            Set a reminder to replace every
-            <select name="reminderTime">
-              <option value="30days">30 days</option>
-              <option value="90days">90 days</option>
-              <option value="3months">3 months</option>
+          <input type="checkbox" name="reminder" checked={inputs.reminder} onChange={handleInputChange} />
+          <label htmlFor="reminder">Set a reminder to replace every</label>
+          <select name="reminderLength" onChange={handleInputChange} >
+            <option value="1">1 month</option>
+            <option value="2">2 months</option>
+            <option value="3">3 months</option>
             </select>
-          </label>
         </InputGroup>
 
         <Button>Save</Button>
