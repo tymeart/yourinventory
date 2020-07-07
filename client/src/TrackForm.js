@@ -71,7 +71,14 @@ const TrackForm = () => {
         
         <InputGroup>
           <label htmlFor="price">Price per unit</label>
-          <input type="number" name="price" value={inputs.price} onChange={handleInputChange} />
+          <input 
+            type="number" 
+            name="price" 
+            min="0" 
+            max="1000" 
+            value={inputs.price} 
+            onChange={handleInputChange} 
+          />
         </InputGroup>
 
         <InputGroup>
