@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const Form = styled.form`
   display: flex;
@@ -50,14 +51,16 @@ const TrackForm = () => {
     });
   }
 
-  const addItem = (event) => {
+  const saveItem = async (event) => {
     event.preventDefault();
-    // make POST request to backend
+    const response = await axios.post('/api/items', inputs);
+    console.log(response)
+    // clear form
   }
 
   return (
     <React.Fragment>
-      <Form onSubmit={addItem}>
+      <Form onSubmit={saveItem}>
         <h3>Add an item to your list</h3>
         <InputGroup>
           <label htmlFor="brand">Brand</label>
