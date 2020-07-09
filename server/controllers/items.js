@@ -3,7 +3,7 @@ const Item = require('../models/item');
 const Category = require('../models/category');
 
 itemsRouter.get('/', async (req, res) => {
-  const items = await Item.find({});
+  const items = await Item.find({}).populate('category', { name: 1 });
   res.json(items.map(item => item.toJSON()));
 });
 

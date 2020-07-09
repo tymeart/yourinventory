@@ -32,6 +32,7 @@ const TrackedList = () => {
   
   const listItems = items.map(item => (
     <ListItem key={item.id}>
+      <div>{item.category.name}</div>
       <div>{item.brand}</div>
       <div>{item.startDate}</div>
     </ListItem>
