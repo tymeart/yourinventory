@@ -10,9 +10,7 @@ categoriesRouter.post('/', async (req, res) => {
   const category = new Category({
     name: req.body.name,
     items: [],
-    avgUseLength: 0,
-    setReminder: req.body.setReminder,
-    reminderLength: req.body.reminderLength
+    avgUseLength: 0
   });
 
   const savedCategory = await category.save();
@@ -22,11 +20,7 @@ categoriesRouter.post('/', async (req, res) => {
 categoriesRouter.put('/:id', async (req, res) => {
   const update = await Category.findByIdAndUpdate(
     req.params.id, 
-    {
-      name: req.body.name,
-      setReminder: req.body.setReminder,
-      reminderLength: req.body.reminderLength
-    },
+    { name: req.body.name },
     { new: true } // returns the newly updated document
   );
 

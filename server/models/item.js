@@ -17,7 +17,9 @@ const itemSchema = mongoose.Schema({
     max: 1000,
     required: true 
   },
-  quantityUnit: { type: String, required: true }
+  quantityUnit: { type: String, required: true },
+  setReminder: { type: Boolean, required: true },
+  reminderLength: Number
 });
 
 itemSchema.set('toJSON', {

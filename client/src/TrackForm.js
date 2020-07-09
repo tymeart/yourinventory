@@ -27,17 +27,20 @@ const Button = styled.button`
 
 const TrackForm = () => {
   const [inputs, setInputs] = useState({
-    name: '',
+    brand: '',
+    category: 'Toilet Paper',
     startDate: '',
     endDate: '',
+    price: 0,
+    quantityNumber: 0,
+    quantityUnit: 'unit',
     reminder: false,
     reminderLength: 1,
-    price: 0
   });
 
   const handleInputChange = (event) => {
     event.persist();
-    
+
     setInputs(inputs => {
       if (event.target.type === "checkbox") {
         return { ...inputs, [event.target.name]: event.target.checked };
@@ -57,8 +60,18 @@ const TrackForm = () => {
       <Form onSubmit={addItem}>
         <h3>Add an item to your list</h3>
         <InputGroup>
-          <label htmlFor="name">Name</label>
-          <input type="text" name="name" value={inputs.name} onChange={handleInputChange} />
+          <label htmlFor="brand">Brand</label>
+          <input type="text" name="brand" value={inputs.brand} onChange={handleInputChange} />
+        </InputGroup>
+
+        <InputGroup>
+          <label htmlFor="category">Category</label>
+          <select name="category" onChange={handleInputChange} >
+            <option value="Toilet Paper">Toilet Paper</option>
+            <option value="Toothbrush">Toothbrush</option>
+            <option value="Hand Soap">Hand Soap</option>
+          </select>
+          <input type="button" value="Create New Category" />
         </InputGroup>
 
         <InputGroup>
@@ -72,7 +85,7 @@ const TrackForm = () => {
         </InputGroup>
         
         <InputGroup>
-          <label htmlFor="price">Price per unit</label>
+          <label htmlFor="price">Price</label>
           <input 
             type="number" 
             name="price" 
@@ -81,6 +94,21 @@ const TrackForm = () => {
             value={inputs.price} 
             onChange={handleInputChange} 
           />
+          <label htmlFor="quantityNumber">Quantity</label>
+          <input 
+            type="number" 
+            name="quantityNumber" 
+            min="0"
+            max="1000"
+            value={inputs.quantityNumber}
+            onChange={handleInputChange}
+          />
+          <select name="quantityUnit" onChange={handleInputChange} >
+            <option value="unit">unit</option>
+            <option value="oz">ounce</option>
+            <option value="floz">fluid ounce</option>
+            <option value="roll">roll</option>
+          </select>
         </InputGroup>
 
         <InputGroup>

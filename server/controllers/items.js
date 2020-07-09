@@ -8,6 +8,7 @@ itemsRouter.get('/', async (req, res) => {
 });
 
 itemsRouter.post('/', async (req, res) => {
+  // req.body is the inputs passed in axios request
   const category = await Category.findOne({ name: req.body.category });
 
   const item = new Item({
@@ -17,7 +18,9 @@ itemsRouter.post('/', async (req, res) => {
     endDate: req.body.endDate,
     price: req.body.price,
     quantityNumber: req.body.quantityNumber,
-    quantityUnit: req.body.quantityUnit
+    quantityUnit: req.body.quantityUnit,
+    setReminder: req.body.reminder,
+    reminderLength: req.body.reminderLength
   });
 
   const savedItem = await item.save();
@@ -35,7 +38,9 @@ itemsRouter.put('/:id', async (req, res) => {
       endDate: req.body.endDate,
       price: req.body.price,
       quantityNumber: req.body.quantityNumber,
-      quantityUnit: req.body.quantityUnit
+      quantityUnit: req.body.quantityUnit,
+      setReminder: req.body.reminder,
+      reminderLength: req.body.reminderLength
     },
     { new: true } // returns the newly updated document
   );
