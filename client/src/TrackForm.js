@@ -94,6 +94,7 @@ const TrackForm = () => {
             name="price" 
             min="0" 
             max="1000" 
+            step="0.01"
             value={inputs.price} 
             onChange={handleInputChange} 
           />
@@ -103,6 +104,7 @@ const TrackForm = () => {
             name="quantityNumber" 
             min="0"
             max="1000"
+            step="0.01"
             value={inputs.quantityNumber}
             onChange={handleInputChange}
           />
