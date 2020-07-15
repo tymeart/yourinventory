@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 
 const ListWrapper = styled.ul`
   padding: 0;
@@ -19,17 +18,7 @@ const ListItem = styled.li`
   }
 `;
 
-const TrackedList = () => {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    async function getItems() {
-      const response = await axios.get('/api/items');
-      setItems(response.data);
-    }
-    getItems();
-  }, []);
-  
+const TrackedList = ({ items }) => {
   const listItems = items.map(item => (
     <ListItem key={item.id}>
       <div>{item.category.name}</div>

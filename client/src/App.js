@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import TrackedList from './TrackedList';
 import TrackForm from './TrackForm';
+import axios from 'axios';
 
 const Wrapper = styled.div`
   align-items: center;
@@ -29,32 +30,15 @@ const Main = styled.main`
 `;
 
 function App() {
-  const [trackedItems, setTrackedItems] = useState([
-    {
-      name: 'Toothbrush',
-      startDate: '05/14/20',
-      reminder: true,
-      reminderTime: '3months',
-      price: 5,
-      id: 1
-    },
-    {
-      name: 'Toilet paper',
-      startDate: '05/28/20',
-      reminder: false,
-      reminderTime: null,
-      price: 1.25,
-      id: 2
-    },
-    {
-      name: 'Sunscreen',
-      startDate: '05/02/20',
-      reminder: false,
-      reminderTime: null,
-      price: 15,
-      id: 3
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    async function getItems() {
+      const response = await axios.get('/api/items');
+      setItems(response.data);
     }
-  ]);
+    getItems();
+  }, []);
 
   return (
     <Wrapper>
@@ -63,8 +47,8 @@ function App() {
         <h2>Keep track of stuff you need to replace eventually.</h2>
       </Header>
       <Main>
-        <TrackForm />
-        <TrackedList />
+        <TrackForm items={items} setItems={setItems} />
+        <TrackedList items={items} />
       </Main>
     </Wrapper>
   );
