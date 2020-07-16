@@ -87,7 +87,7 @@ const TrackForm = ({ items, setItems }) => {
 
         <InputGroup>
           <label htmlFor="category">Category</label>
-          <select name="category" onChange={handleInputChange} >
+          <select name="category" value={inputs.category} onChange={handleInputChange} >
             <option value="Toilet Paper">Toilet Paper</option>
             <option value="Toothbrush">Toothbrush</option>
             <option value="Hand Soap">Hand Soap</option>
@@ -126,7 +126,7 @@ const TrackForm = ({ items, setItems }) => {
             value={inputs.quantityNumber}
             onChange={handleInputChange}
           />
-          <select name="quantityUnit" onChange={handleInputChange} >
+          <select name="quantityUnit" value={inputs.quantityUnit} onChange={handleInputChange} >
             <option value="unit">unit</option>
             <option value="oz">ounce</option>
             <option value="floz">fluid ounce</option>
@@ -137,7 +137,7 @@ const TrackForm = ({ items, setItems }) => {
         <InputGroup>
           <input type="checkbox" name="reminder" checked={inputs.reminder} onChange={handleInputChange} />
           <label htmlFor="reminder">Set a reminder to replace every</label>
-          <select name="reminderLength" onChange={handleInputChange} >
+          <select name="reminderLength" value={inputs.reminderLength} onChange={handleInputChange} >
             <option value="1">1 month</option>
             <option value="2">2 months</option>
             <option value="3">3 months</option>
