@@ -1,13 +1,14 @@
 const itemsRouter = require('express').Router();
 const Item = require('../models/item');
 const Category = require('../models/category');
+const { validationRules, validate } = require('../utils/validator');
 
 itemsRouter.get('/', async (req, res) => {
   const items = await Item.find({}).populate('category', { name: 1 });
   res.json(items.map(item => item.toJSON()));
 });
 
-itemsRouter.post('/', async (req, res) => {
+itemsRouter.post('/', validationRules(), validate, async (req, res) => {
   // req.body is the inputs passed in axios request
   const category = await Category.findOne({ name: req.body.category });
 
@@ -29,7 +30,7 @@ itemsRouter.post('/', async (req, res) => {
   res.json(savedItem.toJSON());
 });
 
-itemsRouter.put('/:id', async (req, res) => {
+itemsRouter.put('/:id', validationRules(), validate, async (req, res) => {
   const update = await Item.findByIdAndUpdate(
     req.params.id,
     {
