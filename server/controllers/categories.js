@@ -8,9 +8,9 @@ categoriesRouter.get('/', async (req, res) => {
 
 categoriesRouter.post('/', async (req, res) => {
   const category = new Category({
-    name: req.body.name,
+    avgUseLength: 0,
     items: [],
-    avgUseLength: 0
+    name: req.body.name
   });
 
   const savedCategory = await category.save();

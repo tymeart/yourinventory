@@ -13,15 +13,15 @@ itemsRouter.post('/', validationRules(), validate, async (req, res) => {
   const category = await Category.findOne({ name: req.body.category });
 
   const item = new Item({
-    category: category._id,
     brand: req.body.brand,
-    startDate: req.body.startDate,
+    category: category._id,
     endDate: req.body.endDate,
     price: req.body.price,
     quantityNumber: req.body.quantityNumber,
     quantityUnit: req.body.quantityUnit,
+    reminderLength: req.body.reminderLength,
     setReminder: req.body.reminder,
-    reminderLength: req.body.reminderLength
+    startDate: req.body.startDate
   });
 
   const savedItem = await item.save();
@@ -35,13 +35,13 @@ itemsRouter.put('/:id', validationRules(), validate, async (req, res) => {
     req.params.id,
     {
       brand: req.body.brand,
-      startDate: req.body.startDate,
       endDate: req.body.endDate,
       price: req.body.price,
       quantityNumber: req.body.quantityNumber,
       quantityUnit: req.body.quantityUnit,
+      reminderLength: req.body.reminderLength,
       setReminder: req.body.reminder,
-      reminderLength: req.body.reminderLength
+      startDate: req.body.startDate,
     },
     { new: true } // returns the newly updated document
   );

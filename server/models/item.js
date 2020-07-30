@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
 const itemSchema = mongoose.Schema({
-  category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
   brand: { type: String, required: true },
-  startDate: { type: Date, required: true },
+  category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
   endDate: Date,
   price: { 
     type: Number,
@@ -18,8 +17,9 @@ const itemSchema = mongoose.Schema({
     required: true 
   },
   quantityUnit: { type: String, required: true },
+  reminderLength: Number,
   setReminder: { type: Boolean, required: true },
-  reminderLength: Number
+  startDate: { type: Date, required: true }
 });
 
 itemSchema.set('toJSON', {

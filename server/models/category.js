@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const categorySchema = mongoose.Schema({
-  name: { type: String, required: true },
+  avgUseLength: Number,
   items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Item' }],
-  avgUseLength: Number
+  name: { type: String, required: true }
 });
 
 categorySchema.set('toJSON', {
