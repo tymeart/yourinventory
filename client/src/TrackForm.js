@@ -82,7 +82,14 @@ const TrackForm = ({ items, setItems }) => {
         <h3>Add an item to your list</h3>
         <InputGroup>
           <label htmlFor="brand">Brand</label>
-          <input type="text" name="brand" value={inputs.brand} onChange={handleInputChange} />
+          <input 
+            type="text" 
+            name="brand" 
+            minLength="3"
+            maxLength="20"
+            value={inputs.brand} 
+            onChange={handleInputChange} 
+          />
         </InputGroup>
 
         <InputGroup>
