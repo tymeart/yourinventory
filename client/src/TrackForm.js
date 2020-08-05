@@ -54,26 +54,30 @@ const TrackForm = ({ items, setItems }) => {
   const saveItem = async (event) => {
     event.preventDefault();
     
-    const response = await axios.post('/api/items', inputs);
-    // restructure category to match items from GET request
-    const newItem = {
-      ...response.data,
-      category: {name: inputs.category, id: response.data.category}
+    try {
+      const response = await axios.post('/api/items', inputs);
+      // restructure category to match items from GET request
+      const newItem = {
+        ...response.data,
+        category: {name: inputs.category, id: response.data.category}
+      }
+      setItems([...items, newItem]);
+  
+      // reset form
+      setInputs({
+        brand: '',
+        category: 'Toilet Paper',
+        startDate: '',
+        endDate: '',
+        price: 0,
+        quantityNumber: 0,
+        quantityUnit: 'unit',
+        reminder: false,
+        reminderLength: 1,
+      });
+    } catch (error) {
+      console.log(error.response)
     }
-    setItems([...items, newItem]);
-
-    // reset form
-    setInputs({
-      brand: '',
-      category: 'Toilet Paper',
-      startDate: '',
-      endDate: '',
-      price: 0,
-      quantityNumber: 0,
-      quantityUnit: 'unit',
-      reminder: false,
-      reminderLength: 1,
-    });
   }
 
   return (

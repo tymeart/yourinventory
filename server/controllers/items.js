@@ -24,10 +24,14 @@ itemsRouter.post('/', validationRules(), validate, async (req, res) => {
     startDate: req.body.startDate
   });
 
-  const savedItem = await item.save();
-  category.items = category.items.concat(savedItem._id);
-  await category.save();
-  res.json(savedItem.toJSON());
+  try {
+    const savedItem = await item.save();
+    category.items = category.items.concat(savedItem._id);
+    await category.save();
+    res.json(savedItem.toJSON());
+  } catch (error) {
+    console.log(error)
+  }
 });
 
 itemsRouter.put('/:id', validationRules(), validate, async (req, res) => {
