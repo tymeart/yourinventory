@@ -20,7 +20,7 @@ itemsRouter.post('/', validationRules(), validate, async (req, res) => {
     quantityNumber: req.body.quantityNumber,
     quantityUnit: req.body.quantityUnit,
     reminderLength: req.body.reminderLength,
-    setReminder: req.body.reminder,
+    setReminder: req.body.setReminder,
     startDate: req.body.startDate
   });
 
@@ -44,7 +44,7 @@ itemsRouter.put('/:id', validationRules(), validate, async (req, res) => {
       quantityNumber: req.body.quantityNumber,
       quantityUnit: req.body.quantityUnit,
       reminderLength: req.body.reminderLength,
-      setReminder: req.body.reminder,
+      setReminder: req.body.setReminder,
       startDate: req.body.startDate,
     },
     { new: true } // returns the newly updated document

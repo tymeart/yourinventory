@@ -9,7 +9,7 @@ const validationRules = () => {
     body('price').isCurrency(),
     body('quantityNumber').isFloat({ min: 0, max: 1000 }),
     body('quantityUnit').isIn(['unit', 'ounce', 'fluid ounce', 'roll']),
-    body('reminderLength').isIn(['1 month', '2 months', '3 months']),
+    body('reminderLength').isNumeric(),
     body('setReminder').isBoolean(),
     body('startDate').isDate()
   ];

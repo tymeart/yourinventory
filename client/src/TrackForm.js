@@ -35,8 +35,8 @@ const TrackForm = ({ items, setItems }) => {
     price: 0,
     quantityNumber: 0,
     quantityUnit: 'unit',
-    reminder: false,
-    reminderLength: 1,
+    setReminder: false,
+    reminderLength: '1',
   });
 
   const handleInputChange = (event) => {
@@ -72,11 +72,11 @@ const TrackForm = ({ items, setItems }) => {
         price: 0,
         quantityNumber: 0,
         quantityUnit: 'unit',
-        reminder: false,
+        setReminder: false,
         reminderLength: 1,
       });
     } catch (error) {
-      console.log(error.response)
+      console.log(error.response.data.errors)
     }
   }
 
@@ -139,15 +139,15 @@ const TrackForm = ({ items, setItems }) => {
           />
           <select name="quantityUnit" value={inputs.quantityUnit} onChange={handleInputChange} >
             <option value="unit">unit</option>
-            <option value="oz">ounce</option>
-            <option value="floz">fluid ounce</option>
+            <option value="ounce">ounce</option>
+            <option value="fluid ounce">fluid ounce</option>
             <option value="roll">roll</option>
           </select>
         </InputGroup>
 
         <InputGroup>
-          <input type="checkbox" name="reminder" checked={inputs.reminder} onChange={handleInputChange} />
-          <label htmlFor="reminder">Set a reminder to replace every</label>
+          <input type="checkbox" name="setReminder" checked={inputs.setReminder} onChange={handleInputChange} />
+          <label htmlFor="setReminder">Set a reminder to replace every</label>
           <select name="reminderLength" value={inputs.reminderLength} onChange={handleInputChange} >
             <option value="1">1 month</option>
             <option value="2">2 months</option>
