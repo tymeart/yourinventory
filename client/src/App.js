@@ -48,6 +48,7 @@ function App() {
       </Header>
       <Main>
         <TrackForm items={items} setItems={setItems} />
+        <hr />
         <TrackedList items={items} />
       </Main>
     </Wrapper>
